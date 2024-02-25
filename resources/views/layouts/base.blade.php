@@ -121,7 +121,7 @@
 									<div class="sb-nav-link-icon"><i class="fas fa-fw fa-tags"></i></div>
 									PROYECTO
 								</a>
-								<a class="nav-link" href="customers.php">
+								<a class="nav-link" href="{{ route('customers.index') }}">
 									<div class="sb-nav-link-icon"><i class="fas fa-fw fa-users"></i></div>
 									CLIENTES
 								</a>

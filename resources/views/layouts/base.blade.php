@@ -78,9 +78,9 @@
 						<!-- /Statistics -->
 
 						<!-- Inventory -->
-						<a class="nav-link" href="inventories.php">
+						<a class="nav-link" href="{{ route('inventories.index') }}">
 							<div class="sb-nav-link-icon"><i class="fas fa-fw fa-cubes"></i></div>
-							INVENTARIOS
+							Inventarios
 						</a>
 						<!-- /Inventory -->
 
@@ -99,9 +99,9 @@
 									<div class="sb-nav-link-icon"><i class="fas fa-fw fa-wrench"></i></div>
 									PIEZAS
 								</a>
-								<a class="nav-link" href="products_history.php">
+								<a class="nav-link" href="{{ route('inventories.index') }}">
 									<div class="sb-nav-link-icon"><i class="fas fa-fw fa-cubes"></i></div>
-									INVENTARIOS
+									Inventarios
 								</a>
 							</nav>
 						</div>

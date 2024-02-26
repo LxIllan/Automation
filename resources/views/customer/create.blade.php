@@ -24,16 +24,7 @@
 
 <!-- row -->
 <div class="row">
-    @if ($errors->any())
-    <div class="alert alert-success mt-2 alert-dismissible text-center">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+    @include('layouts.errors')
     <div class="col-6">
         <form id="customerForm" action="{{ route('customers.store') }}" method="POST">
             @csrf

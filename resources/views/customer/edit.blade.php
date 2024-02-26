@@ -24,15 +24,7 @@
 
 <!-- row -->
 <div class="row">
-    @if ($errors->any())
-    <div class="alert alert-danger mt-2">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+    @include('layouts.errors')
     <div class="col-6">
         <form id="customerForm" action="{{ route('customers.update', $customer) }}" method="POST">
             @csrf

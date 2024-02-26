@@ -1,0 +1,60 @@
+models:
+  Customer:
+    name: string
+    relationships:
+      hasMany: Project
+  Worker:
+    name: string
+    relationships:
+      hasMany: Piece
+  Project:
+    name: string
+    description: longText
+    relationships:
+      belongsTo: Customer
+      hasMany: Piece
+  PieceCategory:
+    name: string
+    relationships:
+      hasMany: Piece
+  Piece:
+    name: string
+    description: longText
+    qty: tinyInteger unsigned
+    hours: float:5:2 unsigned
+    status: enum:Pedido,Proceso,Terminado,Pausado,Cancelado default:Pedido
+    relationships:
+      belongsTo: Project, Worker, PieceCategory
+      hasMany: File
+  File:
+    name: string
+    path: string
+    relationships:
+      belongsTo: Piece
+  Inventory:
+    name: string
+    description: longText
+    relationships:
+      hasMany: InventoryItem
+  InventoryItem:
+    name: string
+    code: string
+    qty: smallInteger
+    price: float:8:2
+    relationships:
+      belongsTo: Inventory
+controllers:
+  Customer:
+    resource: web
+  Worker:
+    resource: web
+  Project:
+    resource: web
+  PieceCategory:
+    resource: web
+  Piece:
+    resource: web
+  Inventory:
+    resource: web
+  InventoryItem:
+    resource: web

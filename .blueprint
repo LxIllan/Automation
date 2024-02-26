@@ -1,0 +1,92 @@
+created:
+    - app/Http/Controllers/CustomerController.php
+    - app/Http/Controllers/WorkerController.php
+    - app/Http/Controllers/ProjectController.php
+    - app/Http/Controllers/PieceCategoryController.php
+    - app/Http/Controllers/PieceController.php
+    - app/Http/Controllers/InventoryController.php
+    - app/Http/Controllers/InventoryItemController.php
+    - database/factories/CustomerFactory.php
+    - database/factories/WorkerFactory.php
+    - database/factories/ProjectFactory.php
+    - database/factories/PieceCategoryFactory.php
+    - database/factories/PieceFactory.php
+    - database/factories/FileFactory.php
+    - database/factories/InventoryFactory.php
+    - database/factories/InventoryItemFactory.php
+    - database/migrations/2024_02_25_074405_create_customers_table.php
+    - database/migrations/2024_02_25_074406_create_workers_table.php
+    - database/migrations/2024_02_25_074407_create_projects_table.php
+    - database/migrations/2024_02_25_074408_create_piece_categories_table.php
+    - database/migrations/2024_02_25_074409_create_pieces_table.php
+    - database/migrations/2024_02_25_074410_create_files_table.php
+    - database/migrations/2024_02_25_074411_create_inventories_table.php
+    - database/migrations/2024_02_25_074412_create_inventory_items_table.php
+    - app/Models/Customer.php
+    - app/Models/Worker.php
+    - app/Models/Project.php
+    - app/Models/PieceCategory.php
+    - app/Models/Piece.php
+    - app/Models/File.php
+    - app/Models/Inventory.php
+    - app/Models/InventoryItem.php
+    - tests/Feature/Http/Controllers/CustomerControllerTest.php
+    - tests/Feature/Http/Controllers/WorkerControllerTest.php
+    - tests/Feature/Http/Controllers/ProjectControllerTest.php
+    - tests/Feature/Http/Controllers/PieceCategoryControllerTest.php
+    - tests/Feature/Http/Controllers/PieceControllerTest.php
+    - tests/Feature/Http/Controllers/InventoryControllerTest.php
+    - tests/Feature/Http/Controllers/InventoryItemControllerTest.php
+    - app/Http/Requests/CustomerStoreRequest.php
+    - app/Http/Requests/CustomerUpdateRequest.php
+    - app/Http/Requests/WorkerStoreRequest.php
+    - app/Http/Requests/WorkerUpdateRequest.php
+    - app/Http/Requests/ProjectStoreRequest.php
+    - app/Http/Requests/ProjectUpdateRequest.php
+    - app/Http/Requests/PieceCategoryStoreRequest.php
+    - app/Http/Requests/PieceCategoryUpdateRequest.php
+    - app/Http/Requests/PieceStoreRequest.php
+    - app/Http/Requests/PieceUpdateRequest.php
+    - app/Http/Requests/InventoryStoreRequest.php
+    - app/Http/Requests/InventoryUpdateRequest.php
+    - app/Http/Requests/InventoryItemStoreRequest.php
+    - app/Http/Requests/InventoryItemUpdateRequest.php
+    - resources/views/customer/index.blade.php
+    - resources/views/customer/create.blade.php
+    - resources/views/customer/show.blade.php
+    - resources/views/customer/edit.blade.php
+    - resources/views/worker/index.blade.php
+    - resources/views/worker/create.blade.php
+    - resources/views/worker/show.blade.php
+    - resources/views/worker/edit.blade.php
+    - resources/views/project/index.blade.php
+    - resources/views/project/create.blade.php
+    - resources/views/project/show.blade.php
+    - resources/views/project/edit.blade.php
+    - resources/views/pieceCategory/index.blade.php
+    - resources/views/pieceCategory/create.blade.php
+    - resources/views/pieceCategory/show.blade.php
+    - resources/views/pieceCategory/edit.blade.php
+    - resources/views/piece/index.blade.php
+    - resources/views/piece/create.blade.php
+    - resources/views/piece/show.blade.php
+    - resources/views/piece/edit.blade.php
+    - resources/views/inventory/index.blade.php
+    - resources/views/inventory/create.blade.php
+    - resources/views/inventory/show.blade.php
+    - resources/views/inventory/edit.blade.php
+    - resources/views/inventoryItem/index.blade.php
+    - resources/views/inventoryItem/create.blade.php
+    - resources/views/inventoryItem/show.blade.php
+    - resources/views/inventoryItem/edit.blade.php
+updated:
+    - routes/web.php
+models:
+    Customer: { name: string, last_name: string, relationships: { hasMany: Project } }
+    Worker: { name: string, last_name: string, relationships: { hasMany: Piece } }
+    Project: { name: string, description: longText, relationships: { belongsTo: Customer, hasMany: Piece } }
+    PieceCategory: { name: string, relationships: { hasMany: Piece } }
+    Piece: { name: string, description: longText, qty: 'tinyInteger unsigned', hours: 'float:5:2 unsigned', status: 'enum:Pedido,Proceso,Terminado,Pausado,Cancelado default:Pedido', relationships: { belongsTo: 'Project, Worker, PieceCategory', hasMany: File } }
+    File: { name: string, path: string, relationships: { belongsTo: Piece } }
+    Inventory: { name: string, description: longText, relationships: { hasMany: InventoryItem } }
+    InventoryItem: { name: string, code: string, description: longText, qty: smallInteger, price: 'float:8:2', relationships: { belongsTo: Inventory } }
